@@ -2,11 +2,14 @@ version: '3.1'
 
 services:
 
-  wordpress:
-    build: .
-    restart: always
+  nginx:
     ports:
       - 8080:80
+    build: nginx
+
+  fpm:
+    build: .
+    restart: always
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
